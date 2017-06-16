@@ -21,7 +21,7 @@ public class TestaMovimentacaoConta {
 		Conta conta = movimentacao.getConta();
 		System.out.println(conta.getMovimentacoes().size());
 
-		Query query = em.createQuery("select c from Conta c");
+		Query query = em.createQuery("select distinct c from Conta c left join fetch c.movimentacoes");
 		List<Conta> contas = query.getResultList();
 
 		for (Conta c : contas) {
